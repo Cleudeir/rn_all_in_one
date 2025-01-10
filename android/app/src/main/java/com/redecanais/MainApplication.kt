@@ -1,4 +1,4 @@
-package com.redecanais
+package com.downloadVideos
 
 import android.app.Application
 import com.facebook.react.PackageList

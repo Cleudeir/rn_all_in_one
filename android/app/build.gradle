@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.redecanais"
+    namespace "com.downloadVideos"
     defaultConfig {
-        applicationId "com.redecanais"
+        applicationId "com.downloadVideos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
