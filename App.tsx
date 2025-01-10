@@ -39,7 +39,7 @@ function App(): React.JSX.Element {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              setType('overFlix');
+              setType('OverFlix');
             }}
             style={[styles.button]}>
             <Text style={styles.buttonText}>OverFlix</Text>

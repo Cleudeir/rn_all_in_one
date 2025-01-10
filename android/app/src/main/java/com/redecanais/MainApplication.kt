@@ -1,4 +1,4 @@
-package com.downloadVideos
+package com.all_in_one
 
 import android.app.Application
 import com.facebook.react.PackageList
