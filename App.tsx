@@ -3,24 +3,21 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  useColorScheme,
   View,
   Text,
   TouchableOpacity,
 } from 'react-native';
 
-import {Y2mate} from './src/Y2mate';
-import OverFlix from './src/OverFlix';
+import {DownloadYouTube} from './src/DownloadYouTube';
+import ShowMoviesSeries from './src/ShowMoviesSeries';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
     backgroundColor: '#0d111d',
     flex: 1,
   };
 
-  const [type, setType] = React.useState('OverFlix');
+  const [type, setType] = React.useState('ShowMoviesSeries');
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -32,21 +29,21 @@ function App(): React.JSX.Element {
         <View style={styles.containerButton}>
           <TouchableOpacity
             onPress={() => {
-              setType('Y2mate');
+              setType('Download YouTube');
             }}
             style={[styles.button]}>
-            <Text style={styles.buttonText}>Y2mate</Text>
+            <Text style={styles.buttonText}>Download YouTube</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              setType('OverFlix');
+              setType('ShowMoviesSeries');
             }}
             style={[styles.button]}>
-            <Text style={styles.buttonText}>OverFlix</Text>
+            <Text style={styles.buttonText}>Movies</Text>
           </TouchableOpacity>
         </View>
-        {type === 'Y2mate' && <Y2mate />}
-        {type === 'OverFlix' && <OverFlix />}
+        {type === 'Download YouTube' && <DownloadYouTube />}
+        {type === 'ShowMoviesSeries' && <ShowMoviesSeries />}
       </View>
     </SafeAreaView>
   );
