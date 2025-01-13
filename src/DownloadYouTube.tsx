@@ -56,7 +56,7 @@ const fixStyles = () => {
     element => {
       const position = window.getComputedStyle(element).position;
       if (position === 'absolute') {
-        element.style.display = 'none';
+      //  element.style.display = 'none';
         window.ReactNativeWebView.postMessage(JSON.stringify({ element: element.id, position: position }));
       }
     });
