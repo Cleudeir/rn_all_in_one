@@ -24,7 +24,7 @@ export function Header({selected, setSelected}: Props): React.JSX.Element {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 60,
+    height: 45,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 1,
     borderRadius: 500,
-    paddingVertical: 8,
-    paddingHorizontal: 15,
+    paddingVertical: 4,
+    paddingHorizontal: 11,
   },
   buttonText: {
     color: '#fff', // White text on dark background
