@@ -1,50 +1,71 @@
 import React from 'react';
 import {
   SafeAreaView,
+  ScrollView,
   StatusBar,
   StyleSheet,
   View,
-  Text,
-  TouchableOpacity,
 } from 'react-native';
 
-import {DownloadYouTube} from './src/DownloadYouTube';
-import ShowMoviesSeries from './src/ShowMoviesSeries';
+import {DownloadYouTube} from './src/Screens/DownloadYouTube';
+import {ShowMoviesSeries} from './src/Screens/ShowMoviesSeries';
+import {Music} from './src/Screens/Music';
+import {Header} from './src/Components/Header';
+import {Card} from './src/Components/Card';
+import {GPT} from './src/Screens/GPT';
+import {Encurtador} from './src/Screens/Encurtador';
+import {ImageToPdf} from './src/Screens/ImageToPdf';
+import {BomberMan} from './src/Screens/BomberMan';
+
+export type screenName =
+  | 'Download YouTube'
+  | 'Show Movies Series'
+  | 'Music'
+  | 'GPT'
+  | 'Encurtador'
+  | 'Image to PDF'
+  | 'BomberMan';
 
 function App(): React.JSX.Element {
   const backgroundStyle = {
-    backgroundColor: '#0d111d',
+    backgroundColor: '#ffff',
     flex: 1,
   };
 
-  const [type, setType] = React.useState('ShowMoviesSeries');
+  const [selected, setSelected] = React.useState<screenName | ''>('');
+
+  const screens: Record<screenName, JSX.Element> = {
+    'Download YouTube': <DownloadYouTube />,
+    'Show Movies Series': <ShowMoviesSeries />,
+    Music: <Music />,
+    GPT: <GPT />,
+    Encurtador: <Encurtador />,
+    'Image to PDF': <ImageToPdf />,
+    BomberMan: <BomberMan />,
+  };
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
-        barStyle={'light-content'}
+        barStyle={'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <View style={styles.container}>
-        <View style={styles.containerButton}>
-          <TouchableOpacity
-            onPress={() => {
-              setType('Download YouTube');
-            }}
-            style={[styles.button]}>
-            <Text style={styles.buttonText}>Download YouTube</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setType('ShowMoviesSeries');
-            }}
-            style={[styles.button]}>
-            <Text style={styles.buttonText}>Movies</Text>
-          </TouchableOpacity>
-        </View>
-        {type === 'Download YouTube' && <DownloadYouTube />}
-        {type === 'ShowMoviesSeries' && <ShowMoviesSeries />}
-      </View>
+      <Header selected={selected} setSelected={setSelected} />
+      {!selected ? (
+        <ScrollView style={styles.container}>
+          {Object.entries(screens).map(
+            ([key]): JSX.Element => (
+              <Card
+                key={key}
+                setSelected={setSelected}
+                name={key as screenName}
+              />
+            ),
+          )}
+        </ScrollView>
+      ) : (
+        screens[selected]
+      )}
     </SafeAreaView>
   );
 }
@@ -54,23 +75,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-  },
-  containerButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  button: {
-    padding: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff', // White text on dark background
-    textAlign: 'center',
-    fontSize: 16,
   },
 });
 
